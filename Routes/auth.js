@@ -7,7 +7,8 @@ const jwt = require("jsonwebtoken");
 const fetchuser = require("../middleware/fetchuser");
 
 const jwt_secret = "kiranisagoodboy";
-//Route 1 :Createing a User using: POST "/api/auth/createuser". Doesn't require auth
+// const jwt_secret = process.env.Jwt_secret;
+//Route 1 :Createing a User using: POST "/api/auth/createuser". Doesn't require login
 router.post(
   "/createuser",
   [
@@ -50,7 +51,7 @@ router.post(
       res.json({ authtoken });
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ error: "some error accured" });
+      res.status(500).json({ error: "Internal server error accured" });
     }
   }
 );
